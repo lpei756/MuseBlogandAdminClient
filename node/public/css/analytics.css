@@ -1,0 +1,121 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url("../images/background.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.dashboard {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+h2 {
+    margin-top: 30px;
+    color: #484f48;
+    font-family: 'Courier New', Courier, monospace;
+}
+#backToProfile{
+    position: absolute;
+    padding: 10px;
+    top: 3%;
+    left: 5%;
+    background-color: antiquewhite;
+    box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+h5{
+    font-size: medium;
+    text-align: center;
+    color: #333;
+}
+.metric-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.metric-card h3 {
+    color: #333;
+}
+
+.top-articles {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.histogram {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.histogram-chart {
+    width: 100%;
+}
+
+.histogram-chart .bar {
+    fill: #ccc;
+}
+
+.article-title {
+    margin-top: 10px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+}
+
+.article-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+.article-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+  
+.article-info {
+    font-size: 0.9em;
+    color: #888;
+    margin-top: 5px;
+  }
+
+  .article-info span {
+    color: #666;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+
+@media screen and (max-width: 500px) {
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }

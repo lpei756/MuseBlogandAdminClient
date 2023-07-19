@@ -1,0 +1,589 @@
+body {
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px;
+  }
+  #MUSE{
+    cursor: pointer;
+  }
+  .navbar {
+    background-color: #70c280;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 20px 50px  rgba(0, 0, 0, 0.35);
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+  }
+  #profile_icon{
+    width: 25px;
+  }
+  
+  .navbar_logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar_logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .navbar_functions {
+    list-style: none;
+    display: flex;
+    padding: 0;
+  }
+  
+  .navbar_functions li {
+    margin-left: 10px;
+  }
+  
+  .navbar_functions a {
+    color: #020202;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar_functions .icon {
+    margin-right: 5px;
+  }
+
+  #icon-container {
+    display: none;
+    position: absolute;
+    top: 11%;
+    right: 10%;
+    
+    /* display: flex; */
+    flex-direction: column;
+    z-index: 99;
+    width: 400px;
+    background-color: aliceblue;
+    opacity: 0.95;
+    box-shadow: 10px 10px 20px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 10px 10px;
+    /* overflow: auto; */
+    word-wrap: break-word;
+  
+  
+  }
+  
+  #notificationTop {
+    text-align: center;
+  }
+  .UnreadNotification{
+    margin-left: 10px;
+  }
+  
+  #notificationBottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* overflow: auto; */
+    word-wrap: break-word;
+  }
+  
+  .notifications {
+    margin: 10px;
+    border: 1px solid #bebebe;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    /* overflow: auto; */
+    word-wrap: break-word;
+  }
+  
+  .notifications:hover {
+    background-color: #f6ffed;
+    color: #87cba2;
+  }
+  .firstLine {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  
+  .red-dot {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+  }
+  #unReadComment {
+    position: relative;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    width: 15px;
+    height: 15px;
+    font-size: 1px;
+    font-weight: bold;
+    top: -30px;
+    left: 10px;
+    z-index: 1;
+  }
+  .contentLine{
+    overflow: auto;
+    word-wrap: break-word;
+    width: 90%;
+  }
+  .senderInformation{
+    margin-left: 5px;
+  }
+  
+  #notificationMore {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #FFFBF2;
+    width: auto;
+    margin-top: 20px; /* 添加上边距 */
+    margin-bottom: 20px; /* 添加下边距 */
+    align-items: center; /* This will align the labels to the left */
+    margin-bottom: 10px;
+    
+  }
+  
+  #articleColumn {
+    grid-area: l;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    background-color: #ffffff;
+    justify-content: space-between;
+    box-shadow: 20px 20px 40px 10px rgba(0, 0, 0, 0.25);
+    
+  }
+
+  .fansInfomation {
+    display: flex;
+    flex-direction: row;
+   
+    align-items: center;
+  }
+  .fansInformationLink{
+    display: flex;
+    flex-direction: row;
+    
+  }
+  #sortAndArticle {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    justify-content: space-between;
+    grid-area: a;
+  }
+  #sortBar {
+    display: flex;
+    flex-direction: row;
+    background-color: #fbd6bb;
+    box-shadow: 20px 20px 40px 10px rgba(0, 0, 0, 0.25);
+    min-height: 74px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #leftSortBar {
+    margin-left: 20px;
+  }
+  #rightSortBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+#sortlabel {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  #sortOptions {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  /* #fansDisplayBar {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 500px;
+  } */
+  
+  .likes {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .comments {
+    width: 20px;
+    height: 20px;
+    margin-top: 5px;
+  }
+  
+  .fansDisplayBar {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff6ed;
+    align-items: center;
+    width: 95%;
+    /* margin: auto; */
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-left: 20px;
+    min-height: 100px;
+    box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.25);
+    font-size: 30px;
+  }
+
+  #fansBar{
+    display: flex;
+    flex-direction: column;
+  }
+ /* #fansDisplayBar {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff6ed;
+    align-items: center;
+    width: 95%;
+    margin: auto;
+    padding-left: 20px;
+    min-height: 100px;
+    box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.25);
+    font-size: 30px;
+  } */
+  /* .thumbnailavatar{
+    width: 50px;
+  } */
+
+  .displayTitle {
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 25px;
+    cursor: pointer;
+  }
+  .displayTitle:hover{
+    color:#87cba2
+  }
+  
+  .partDiscription {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 90%;
+    margin-left: 20px;
+    margin-top: 10px;
+  }
+  
+  .thridLine {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #fff6ed;
+    align-items: center;
+    margin: 10px;
+    width: 90%;
+  }
+  .userClick{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+  }
+  #navUserClick{
+    cursor: pointer;
+  }
+  
+  .likesAndComments {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px;
+  }
+  
+  .like {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff6ed;
+    justify-content: flex-start;
+    align-items: center;
+    color: #cdcdcd;
+    margin-right: 10px;
+  }
+  
+  .comment {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff6ed;
+    justify-content: space-between;
+    align-items: center;
+    color: #cdcdcd;
+  }
+  
+  .fansLine {
+    margin-right: 10px;
+  }
+  
+  .userImage {
+    width: 50px;
+  
+  }
+  .pagenumber {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+  }
+  
+  .page {
+    border: 1px solid #bebebe;
+    border-radius: 4px;
+    margin: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  .page:hover {
+    background-color: #e9e1ff;
+    color: #7949ff;
+  }
+  
+  .pages {
+    border: 1px solid #bebebe;
+    border-radius: 4px;
+    margin: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  .pages:hover {
+    background-color: #e9e1ff;
+    color: #7949ff;
+  }
+  
+  
+  #visitor {
+    color: #bebebe;
+    font-size: large;
+    margin-top: 20px;
+  }
+  
+  #previousArticles {
+    grid-area: r;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-between; */
+    background-color: #ffffff;
+    box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.25);
+    margin-left: 15px;
+    margin-right: 15px;
+    overflow: auto;
+    width: 90%;
+    height: 500px;
+    border: 10px #7949ff;
+  }
+  
+  #previousArticlesTitle {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    background-color: #87cba2;
+    width: 100%;
+    height: 17%;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 22px;
+  }
+  
+  .previousArticlesList {
+    display: flex;
+    flex-direction: column;
+    /* align-items: self-start; */
+    width: 90%;
+    
+    min-height: 20%;
+    background-color: #f6ffed;
+    box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.25);
+    margin: 10px;
+    padding: 5px;
+  }
+  /* .avatar{
+    width: 30px;
+  } */
+  .previousDisplayTitle{
+    font-size: large;
+    margin-left: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  .previousUserUsername{
+    font-size: medium;
+    margin-left: 10px;
+  }
+  .previousDate{
+    font-size: small;
+    margin-left: 10px;
+  }
+  .avatarAndUsername{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  
+  }
+  .secondLine {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+  }
+  .previousPartDiscription{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    margin-left: 20px;
+  }
+  
+  /* 注意这里使用的是超链接的id,不是超链接包围的内容 */
+  #more {
+    color: inherit;
+    text-decoration: none;
+  }
+  #moreContainer{
+    background-color: rgb(122, 230, 210);
+    color: #ffffff;
+    text-align: center;
+    justify-content: center;
+    width: 80%;
+    padding: 10px;
+    cursor: pointer;
+  
+  }
+  
+  #more:visited {
+    color: inherit;
+  }
+  
+  .link {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .link:visited {
+    color: inherit;
+  }
+  
+  .likeLink {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .likeLink:visited {
+    color: inherit;
+  }
+
+  .follow-button{
+    position: absolute;
+    right:10%;
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+    
+    padding: 8px 16px;
+    background-color: #70c280;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .follow-button:hover {
+    background-color: #56a76f;
+  }
+  
+  .follow-button.unfollow {
+    background-color: #554f4f;
+  }
+  
+  .follow-button.unfollow:hover {
+    background-color: #a6a6a6;
+  }
+  /* #sortBar {
+    display: flex;
+    flex-direction: column;
+    background-color: #fbd6bb;
+    box-shadow: 20px 20px 40px 10px rgba(0, 0, 0, 0.25);
+    min-height: 74px;
+    justify-content: space-between;
+    align-items: center;
+  } */
+  
+  /* Exercise Two: Made responsive using media query */
+  /*when the screen width is less than or equal to 1000 pixels, set new peremeter*/
+  
+  @media screen and (max-width: 1000px) {
+    #header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* grid-template-columns: 54fr 950fr 20fr 377fr 39fr;
+            grid-template-rows: 100fr 34fr 542fr 310fr 38fr; */
+    }
+  }
+  
+  @media screen and (max-width: 500px) {
+    #container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* grid-template-columns: 54fr 950fr 20fr 377fr 39fr;
+              grid-template-rows: 100fr 34fr 542fr 310fr 38fr; */
+    }
+  
+    /* #header {
+      grid-area: h;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #87cba2;
+      box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.35);
+      font-size: 30px;
+    } */
+  
+   
+
+  }
+  

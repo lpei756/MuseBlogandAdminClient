@@ -1,0 +1,128 @@
+ <link rel="stylesheet" href="/css/article_view.css">
+  <script src="/client/articleViewClient.js"></script>
+
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="/images/logopng-after-trim.png" alt="Logo">
+            <span id="MUSE">MUSE</span>
+        </div>
+    
+        {{#unless user}}
+        <div class="toastmessage">{{toastMessage}}</div>
+        {{/unless}}
+        <div class="navbar-functions">
+            <ul id="navbar-ul">
+                
+                <li id="home"><a href="/"><span class="icon"><img src="/images/home.png" id="home_icon"></span>Home</a></li>
+          
+                <li id="sign-in">
+                    <a href="/user_login"><span class="icon"><img src="/images/login-box-line.png" id="sign_in_icon"></span>Sign in</a>
+                </li>
+         
+                {{#if hasUnreadNotifications}}
+            <li id="notification"><a href="/notification/{{user.User_ID}}/1" id="notification-link"><span class="icon"><img src="/images/notification-red.png" id="notification_icon"></span>Notifications</a>
+            <div id="unReadComment">{{unreadNotificationsCount.count}}</div>
+            </li>
+            {{else}}
+            <li id="notification"><a href="/notification/{{user.User_ID}}/1"><span class="icon"><img src="/images/notification-pink.png" id="notification_icon"></span>Notifications</a></li>
+            <div id="noUnReadComment"></div>
+            {{/if}}
+                <li id="profile"><a href="/profile/{{user.User_ID}}"><span class="icon"><img src="/images/{{user.Avatar}}" id="profile_icon"></span>My Profile</a></li> 
+                <li id="create-article"><a href="/create_article"><span class="icon"><img src="/images/article-line.png" id="create_article_icon"></span>Create article</a></li> 
+                <li id="log-out"><a href="/logout"><span class="icon"><img src="/images/logout-box.png" id="logout_icon"></span>Sign Out</a></li>
+          
+            </ul>
+        </div>
+    </nav>
+    {{!-- <div id="notificationpanel">
+       
+      
+    </div> --}}
+    <div id="icon-container">
+      <div id="notificationTop">Notification</div>
+      <div class="UnreadNotification"><strong>Unread notification: {{unreadNotificationsCount.count}}</strong>
+      </div>
+      <div id="notificationBottom">
+        {{#each notifications}}
+        <div class="notifications" id="notifications{{this.Notification_ID}}">
+            <div class="firstLine">
+              <div class="contentLine" >{{this.Content}}</div>
+            {{#unless this.Is_Read}}
+            <div class="red-dot"></div>
+            {{/unless}}
+          </div>
+          
+        
+        <div class="senderInformation">{{this.Timestamp}}</div>
+      </div>
+      {{/each}}
+      <div id="notificationMore">More</div>
+    </div>
+  </div>
+
+<div id="container">
+    <div id="articlepanel">
+        <div class="banner">
+            <div id="paneltitle">
+                {{!-- <div id="titlecontent"> --}}
+                    {{article.Title}}
+                    {{!-- </div> --}}
+            </div>
+            <button id="hidecommentpanel">Hide comments</button>
+        </div>
+        <div id="article">
+            <div id="parentEditArticle">
+                 <div class="authorinfo">
+                <div class="articledetail">
+                    <img src="/images/{{authorAvatar.Avatar}}" class="avatar">
+                    <a href="/profile/{{article.User_ID}}" class="authorname">{{author.Username}}</a>
+                    <span class="publishtime">Published on: {{article.Date}}</span>
+                </div>
+                <div id="likediv">
+        
+                    <a href="/like?Article_ID={{article.Article_ID}}" title="Like this article!"><img src="{{likeIcon}}" class="heart"></a>
+                    
+                <span id="likenumber">{{article.Likes_Count}}</span>
+                </div>
+            </div>
+            {{#if article.Image}}
+            <div id="articleImageDiv">
+                <img src="/uploadedFiles/{{article.Image}}" id="articleImage" alt="article image">
+            </div>
+            {{/if}}
+            <div id="articletext">
+            {{{article.Content}}}
+            </div>
+            </div>
+            
+            <div id="editArticle">Edit</div>
+               
+            </div>   
+    </div>
+    <div id="commentpanel">
+        <div class="banner">
+            <div id="commenttitle">Comments</div>
+        </div>
+        <div id="numberofcomments">{{commentCount.[COUNT(*)]}}&nbsp;&nbsp;&nbsp;Comments</div>
+        <div class="comment">
+            
+        </div>
+    
+     
+        <div id="comment-textarea-div">
+            <form action="/writecomment?Article_ID={{article.Article_ID}}" method="POST">
+                <div class="textarea-div">
+                    <textarea rows="4" cols="50" name="comment" class="comment-textarea" placeholder="please leave your comment"></textarea>
+                </div>
+                <div id="writecomment-button">
+                    <button type="submit" id="writecomment">Send</button>
+                </div>
+            </form>
+        </div>
+
+         
+    </div>
+    
+    </div>
+   
+</div>

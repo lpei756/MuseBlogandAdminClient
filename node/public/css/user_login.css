@@ -1,0 +1,343 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+  margin:0px;
+}
+.toastMessage {
+  width: 100%;
+  color: rgba(253, 1, 1, 0.685);
+  position: absolute;
+  top: 118px;
+  left: 45px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 24px;
+  opacity: 1;
+  text-align: left;
+  cursor: pointer;
+}
+
+.container {
+  width: 100%;
+  height: 1024px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+
+.login {
+  width: 100%;
+  height: 100%;
+  background: url("../images/background.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 1px;
+  left: 0px;
+  overflow: hidden;
+}
+
+.navibar {
+  width: 100%;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+
+.navibarbackground {
+  width: 100%;
+  height: 100px;
+  background: #70c280;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.3499999940395355);
+  overflow: hidden;
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100px;
+  padding-right: 20px; 
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 248px;  
+}
+
+.menu > div {
+  width: 65px;
+  height: 65px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  margin-left: 15px;
+ 
+}
+
+#home_icon {
+  width: 65px;
+  height: 65px;
+}
+
+
+.home { 
+  cursor: pointer;
+}
+
+
+.title {
+  width: 248px;
+  height: 78px;
+  background: url("../images/v262_230.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 11px;
+  left: 26px;
+  overflow: hidden;
+}
+
+.logo {
+  width: 78px;
+  height: 78px;
+  background: url("../images/logo.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+
+.muse {
+  width: 158px;
+  color: rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 22px;
+  left: 90px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 36px;
+  opacity: 1;
+  text-align: left;
+}
+.frame {
+  width: 830px;
+  height: 555px;
+  opacity: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  position: absolute;
+  border-radius: 20px;
+}
+
+.panel {
+  width: 830px;
+  height: 555px;
+  background: rgba(255,246,229,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  border: 1px solid rgba(233,223,223,0);
+  box-shadow: 10px 10px 60px rgba(0, 0, 0, 0.4000000059604645);
+  border-radius: 20px;
+}
+
+.dont {
+  width: 490px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 512px;
+  left: 46px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 24px;
+  opacity: 1;
+  text-align: left;
+  cursor: pointer;
+}
+
+.loginbtn {
+  width: 706px;
+  height: 77px;
+  background: rgba(160,215,255,1);
+  color: rgba(0,0,0,1);
+  text-align: center;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 36px;
+  opacity: 1;
+  position: absolute;
+  top: 426px;
+  left: 46px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgba(240,240,240,1);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.textpassword {
+  width: 706px;
+  height: 76px;
+  background: rgba(244,247,249,1);
+  opacity: 1;
+  position: absolute;
+  top: 327px;
+  left: 46px;
+  border: 2px solid rgba(240,240,240,1);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  overflow: hidden;
+  color: rgba(190,190,190,1);
+  font-family: Italiana;
+  font-weight: normal;
+  font-size: 32px;
+  text-align: left;
+}
+
+.textpassword::-webkit-input-placeholder {
+  color: rgba(190,190,190,1);
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 32px;
+  text-align: left;
+}
+
+.forget {
+  width: 210px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 291px;
+  left: 580px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 24px;
+  opacity: 1;
+  text-align: left;
+  cursor: pointer;
+}
+.password {
+  width: 368px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 283px;
+  left: 45px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 32px;
+  opacity: 1;
+  text-align: left;
+}
+.textusername {
+  width: 706px;
+  height: 76px;
+  background: rgba(244,247,249,1);
+  opacity: 1;
+  position: absolute;
+  top: 198px;
+  left: 45px;
+  border: 2px solid rgba(240,240,240,1);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  overflow: hidden;
+  color: rgba(0,0,0,1);
+  font-family: Italiana;
+  font-weight: normal;
+  font-size: 32px;
+  text-align: left;
+}
+.textusername::-webkit-input-placeholder {
+  color: rgba(190,190,190,1);
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 32px;
+  text-align: left;
+}
+.username {
+  width: 368px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 153px;
+  left: 45px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 32px;
+  opacity: 1;
+  text-align: left;
+}
+.iamadmin {
+  width: 164px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 83px;
+  left: 626px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 24px;
+  opacity: 1;
+  text-align: left;
+  cursor: pointer;
+}
+.psignin {
+  width: 478px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 83px;
+  left: 45px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 24px;
+  opacity: 1;
+  text-align: left;
+}
+.signin {
+  width: 435px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 14px;
+  left: 46px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 48px;
+  opacity: 1;
+  text-align: left;
+}
+
+
+

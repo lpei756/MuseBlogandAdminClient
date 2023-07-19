@@ -1,0 +1,633 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0px;
+  font-size: 14px;
+  margin: 0px;
+}
+.container {
+  width: 100%;
+  height: 1024px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.frame {
+  width: 100%;
+  height: 100%;
+  background: url("../images/background.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  overflow: hidden;
+  position: absolute;
+  
+}
+.pannel {
+  width: 882px;
+  height: 906px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  border-radius: 20px;
+}
+.pannelshadow {
+  width: 830px;
+  height: 906px;
+  background: rgba(255,246,229,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 44px;
+  border: 1px solid rgba(233,223,223,0);
+  box-shadow: 10px 10px 60px rgba(0, 0, 0, 0.4000000059604645);
+  border-radius: 20px;
+}
+
+.toastMessage {
+  width: 100%;
+  color: rgba(253, 1, 1, 0.685);
+  position: absolute;
+  top: 870px;
+  left: 92px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 24px;
+  opacity: 1;
+  text-align: left;
+  cursor: pointer;
+}
+
+.submitbtn {
+  width: 150px;
+  height: 50px;
+  background: rgba(160,215,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 815px;
+  left: 92px;
+  overflow: hidden;
+  cursor: pointer;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 24px;
+  text-align: center;
+  border-radius: 7px;
+  border-color: #fff;
+}
+
+.iconcontainer {
+  width: 250px;
+  height: 250px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 545px;
+  left: 96px;
+  overflow: hidden;
+}
+
+.icon1, .icon2, .icon3, .icon4, .icon5, .icon6, .icon7, .icon8, .icon9 {
+  padding: 3px;
+}
+/* #icon1, #icon2, #icon3, #icon4, #icon5, #icon6, #icon7, #icon8, #icon9 {
+  
+} */
+/* #current-user-avatar{
+  
+z-index: 10;
+}
+#current-user-avatar-message{
+z-index: 10;
+} */
+
+.icon1 {
+  width: 70px;
+  height: 70px;
+  background: url("../images/boy1.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: relative;
+  top: 5px;
+  left: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.icon2 {
+  width: 70px;
+  height: 70px;
+  background: url("../images/boy2.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 5px;
+  left: 85px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.icon3 {
+  width: 70px;
+  height: 70px;
+  background: url("../images/boy3.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 5px;
+  left: 170px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.icon4 {
+  width: 70px;
+  height: 70px;
+  background: url("../images/boy4.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 88px;
+  left: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.icon5 {
+  width: 70px;
+  height: 70px;
+  background: url("../images/girl1.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 88px;
+  left: 85px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.icon6 {
+  width: 70px;
+  height: 70px;
+  background: url("../images/girl2.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 88px;
+  left: 170px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.icon7 {
+  width: 70px;
+  height: 70px;
+  background: url("../images/girl3.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 170px;
+  left: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.icon8 {
+  width: 70px;
+  height: 70px;
+  background: url("../images/girl4.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 170px;
+  left: 85px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.icon9 {
+  width: 70px;
+  height: 70px;
+  background: url("../images/girl5.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 170px;
+  left: 170px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.chooseicon {
+  width: 368px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 514px;
+  left: 95px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.passwordHint {
+  width: 100%;
+  color: rgba(254, 6, 6, 0.808);
+  position: absolute;
+  top: 296px;
+  left: 256px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+  }
+.descriptiontext {
+  width: 706px;
+  height: 38px;
+  background: rgba(244,247,249,1);
+  opacity: 1;
+  position: absolute;
+  top: 467px;
+  left: 91px;
+  border: 2px solid rgba(240,240,240,1);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  overflow: hidden;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 20px;
+  text-align: left;
+}
+.descriptiontext::-webkit-input-placeholder {
+  color: rgba(190,190,190,1);
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 20px;
+  text-align: left;
+}
+.description {
+  width: 368px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 440px;
+  left: 96px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+
+.descriptionHint {
+  width: 100%;
+  color: rgba(254, 6, 6, 0.808);
+  position: absolute;
+  top: 440px;
+  left: 256px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+
+.confirmpasswordtext {
+  width: 706px;
+  height: 38px;
+  background: rgba(244,247,249,1);
+  opacity: 1;
+  position: absolute;
+  top: 395px;
+  left: 91px;
+  border: 2px solid rgba(240,240,240,1);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  overflow: hidden;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 20px;
+  text-align: left;
+}
+.confirmpasswordtext::-webkit-input-placeholder {
+  color: rgba(190,190,190,1);
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 20px;
+  text-align: left;
+}
+.confirmpassword {
+  width: 368px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 367px;
+  left: 96px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.passwordtext {
+  width: 706px;
+  height: 38px;
+  background: rgba(244,247,249,1);
+  opacity: 1;
+  position: absolute;
+  top: 323px;
+  left: 91px;
+  border: 2px solid rgba(240,240,240,1);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  overflow: hidden;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 20px;
+  text-align: left;
+}
+.passwordtext::-webkit-input-placeholder  {
+  color: rgba(190,190,190,1);
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 20px;
+  text-align: left;
+}
+.password {
+  width: 368px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 296px;
+  left: 96px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.birthdatetext {
+  width: 706px;
+  height: 38px;
+  background: rgba(244,247,249,1);
+  opacity: 1;
+  position: absolute;
+  top: 251px;
+  left: 89px;
+  border: 2px solid rgba(240,240,240,1);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  overflow: hidden;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 20px;
+  text-align: left;
+}
+.birthdatetext::-webkit-input-placeholder {
+  color: rgba(190,190,190,1);
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 20px;
+  text-align: left;
+}
+.birthdate {
+  width: 368px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 227px;
+  left: 96px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+
+.birthdateHint {
+  width: 100%;
+  color: rgba(254, 6, 6, 0.808);
+  position: absolute;
+  top: 227px;
+  left: 256px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+
+.idnametext {
+  width: 706px;
+  height: 38px;
+  background: rgba(244,247,249,1);
+  opacity: 1;
+  position: absolute;
+  top: 182px;
+  left: 89px;
+  border: 2px solid rgba(240,240,240,1);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  overflow: hidden;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 20px;
+  text-align: left;
+}
+
+.idnametext::-webkit-input-placeholder {
+  color: rgba(190,190,190,1);
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 20px;
+  text-align: left;
+}
+
+.idname {
+  width: 368px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 157px;
+  left: 96px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.usernametext {
+  width: 706px;
+  height: 38px;
+  background: rgba(244,247,249,1);
+  opacity: 1;
+  position: absolute;
+  top: 115px;
+  left: 89px;
+  border: 2px solid rgba(240,240,240,1);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  overflow: hidden;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 20px;
+  text-align: left;
+}
+.usernametext::-webkit-input-placeholder {
+  color: rgba(190,190,190,1);
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 20px;
+  text-align: left;
+}
+.username {
+  width: 368px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 92px;
+  left: 95px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.haveaccount {
+  width: 256px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 92px;
+  left: 626px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+  cursor: pointer;
+}
+.creataccount {
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 28px;
+  left: 200px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 48px;
+  opacity: 1;
+  text-align: left;
+}
+.logo {
+  width: 84px;
+  height: 84px;
+  background: url("../images/logo.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: relative;
+  top: 10px;
+  left: 90px;
+  overflow: hidden;
+}
+
+.passwordAvailability {
+  width: 100%;
+  color: rgba(254, 6, 6, 0.808);
+  position: absolute;
+  top: 367px;
+  left: 256px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+  
+.usernameAvailability {
+  width: 100%;
+  color: rgba(254, 6, 6, 0.808);
+  position: absolute;
+  top: 92px;
+  left: 256px;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+
+.deletebtn {
+  width: 300px;
+  height: 50px;
+  background: rgba(160,215,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 815px;
+  left: 392px;
+  overflow: hidden;
+  cursor: pointer;
+  font-family: Italiana;
+  font-weight: Regular;
+  font-size: 24px;
+  text-align: center;
+  border-radius: 7px;
+  border-color: #fff;
+}
+
+.deleteAccountWindow {  
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 20%;
+  top: 35%;
+  width: 70%;
+  /* height: 70px; */
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #fff;
+  padding-top: 20px;
+  border-radius: 5px;
+  border: 1px solid gray;} 
+
+.DeleteAccountYesAndNoButton { 
+  display:flex; 
+  flex-direction: row; 
+  align-items: center; 
+  justify-content: space-around; 
+}
+.yesDeleteAccount, .noDeleteAccount { 
+  margin: 5px; 
+}

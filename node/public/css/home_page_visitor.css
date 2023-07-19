@@ -1,0 +1,280 @@
+/*The whole body was included in a <div>, while the class name of this div is container*/
+body{
+  margin:0px;
+}
+#container {
+  display: grid;
+  grid-template-columns: 240fr 1800fr 240fr;
+  grid-template-rows: 33.5fr 974fr;
+  /* grid-template-columns: 54fr 950fr 20fr 377fr 39fr;
+  grid-template-rows: 100fr 34fr 542fr 310fr 38fr; */
+  grid-template-areas:
+    "h h h"
+    ". a .";
+}
+
+#header {
+  grid-area: h;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #70c280;
+  box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+#muse {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+}
+#MUSE{
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#leftTopBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#sign-in {
+  margin-right: 50px;
+  cursor: pointer;
+}
+#signInAndImage{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#articleColumn {
+  grid-area: a;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  justify-content: space-between;
+  grid-area: a;
+  box-shadow: 20px 20px 40px 10px rgba(0, 0, 0, 0.25);
+  margin-top: 20px;
+}
+
+#sortAndArticle {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  justify-content: space-between;
+}
+
+#sortBar {
+  display: flex;
+  flex-direction: row;
+  background-color: #fbd6bb;
+  box-shadow: 20px 20px 40px 10px rgba(0, 0, 0, 0.25);
+  min-height: 74px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#leftSortBar {
+  margin-left: 20px;
+}
+
+#rightSortBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#sortlabel {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#sortOptions {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#articleDisplayBar {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.likes {
+  width: 20px;
+  height: 20px;
+}
+
+.comments {
+  width: 20px;
+  height: 20px;
+}
+
+.articles {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff6ed;
+  justify-content: space-between;
+  align-items: start;
+  width: 95%;
+  margin: 10px;
+  min-height: 80px;
+  box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.25);
+}
+
+.displayTitle {
+  margin-left: 20px;
+  margin-top: 10px;
+  font-size: 25px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width:500px;
+}
+
+.displayTitle:hover{
+  color:#87cba2
+}
+
+.partDiscription {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 800px; /* 根据需要进行调整 */
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.thridLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #fff6ed;
+  align-items: center;
+  margin: 10px;
+  width: 90%;
+}
+
+.userClick{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.likesAndComments {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px;
+}
+
+.authorInformation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.like {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #cdcdcd;
+  margin-right: 10px;
+}
+
+.comment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #cdcdcd;
+}
+
+.authorLine {
+  margin-right: 10px;
+}
+
+.userImage {
+  width: 30px;
+  height: 30px;
+}
+
+#pagesBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.page {
+  border: 1px solid #bebebe;
+  border-radius: 4px;
+  margin: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.page:hover {
+  background-color: #e9e1ff;
+  color: #7949ff;
+}
+
+.pages {
+  border: 1px solid #bebebe;
+  border-radius: 4px;
+  margin: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.pages:hover {
+  background-color: #e9e1ff;
+  color: #7949ff;
+}
+
+.link {
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.link:visited {
+  color: inherit;
+}
+
+.likeLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.likeLink:visited {
+  color: inherit;
+}
+
+/* #rightColumn {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  grid-area: r;
+  box-shadow: -10px 20px 20px rgba(0, 0, 0, 0.25);
+} */
+
+/* Exercise Two: Made responsive using media query */
+/*when the screen width is less than or equal to 1000 pixels, set new peremeter*/
+
+/* @media screen and (max-width: 1000px) {
+  .container {
+    width: 100%;
+  }
+} */

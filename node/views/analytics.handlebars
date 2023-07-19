@@ -1,0 +1,69 @@
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="client/analytics.js"></script>
+<script src="client/chart.js"></script>
+
+<link rel="stylesheet" href="./css/analytics.css">
+
+<h1>Analytics Dashboard</h1>
+<a href="profile/{{user.User_ID}}" id="backToProfile"><div>Back to profile</div></a>
+<div class="dashboard">
+    <section class="performance-metrics">
+        <h2>Key Performance Metrics</h2>
+        <div class="metric-card">
+            <h3 id="total-followers">Total Followers: {{totalFollowers}}</h3>
+        </div>
+        <div class="metric-card">
+            <h3 id="total-comments">Total Comments: {{totalComments}}</h3>
+        </div>
+        <div class="metric-card">
+            <h3 id="total-likes">Total Likes: {{totalLikes}}</h3>
+        </div>
+    </section>
+    
+
+    <section class="top-articles">
+    <h2>Top Articles</h2>
+    <div id="articles-container">
+        {{#each articles}}
+        <div class="article-card">
+            <h1><span class="rank">Rank {{addOne @index}}</span></h1>
+            {{#if this.Image}}
+            <img class="article-image" src="/uploadedFiles/{{this.Image}}" alt="Article Thumbnail">
+            {{/if}}
+            <h4 class="article-title">{{this.Title}}</h4>
+            <p class="article-info">Popularity: <span class="popularity">{{this.Popularity}}</span></p>
+            <p class="article-info">Comments: <span class="comments">{{this.Comments_Count}}</span></p>
+            <p class="article-info">Likes: <span class="likes">{{this.Likes_Count}}</span></p>
+            <p class="article-info">Creation Time: <span class="creation-time">{{this.Date}}</span></p>
+        </div>
+        {{/each}}
+    </div>
+    </section>
+
+    {{!-- <section class="top-articles">
+    <h2>Top Articles</h2>
+    <div id="articles-container">
+        <!-- The server-side code will populate this with the top 3 articles... -->
+        <div class="article-card">
+            <img id="article-image" src="" alt="Article Thumbnail" class="article-image">
+            <h4 class="article-title">Article Title</h4>
+            <p class="article-info">Popularity: <span class="popularity"></span></p>
+            <p class="article-info">Comments: <span class="comments"></span></p>
+            <p class="article-info">Likes: <span class="likes"></span></p>
+            <p class="article-info">Creation Time: <span class="creation-time"></span></p>
+        </div>
+        <!-- Repeat above for each article -->
+    </div>
+    </section> --}}
+
+
+    <section class="histogram">
+        <h2>Histogram of Comments Over Time (From most recent 10 days)</h2>
+        <canvas id="histogram-chart"></canvas>
+    </section>
+</div>
+
+
+

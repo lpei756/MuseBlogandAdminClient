@@ -1,0 +1,174 @@
+<link rel="stylesheet" href="/css/profile.css">
+<script src="/client/profile.js"></script>
+<script src="/client/follows.js"></script>
+
+<nav class="navbar">
+    <div class="navbar-logo">
+        <img src="/images/logopng-after-trim.png" alt="Logo">
+        <span id="MUSE">MUSE</span>
+    </div>
+
+    <div class="navbar-functions">
+        <ul id="navbar-ul">
+            <li id="home"><a href="/"><span class="icon"><img src="/images/home.png" id="home_icon"></span>Home</a></li>
+
+            <li id="sign-in">
+                <a href="/user_login"><span class="icon"><img src="/images/login-box-line.png"
+                            id="sign_in_icon"></span>Sign in</a>
+            </li>
+            {{#if hasUnreadNotifications}}
+            <li id="notification">
+                <a href="/notification/{{user.User_ID}}/1" id="notification-link"><span class="icon">
+                    <img src="/images/notification-red.png" id="notification_icon">
+                            </span>Notifications</a>
+                <div id="unReadComment">{{unreadNotificationsCount.count}}</div>
+            </li>
+            {{else}}
+            <li id="notification"><a href="/notification/{{user.User_ID}}/1"><span class="icon"><img
+            src="/images/notification-pink.png" id="notification_icon"></span>Notifications</a>
+            <div id="noUnReadComment"></div>
+            </li>  
+            {{/if}}
+            <li id="profile"><a href="/profile/{{user.User_ID}}"><span class="icon"><img src="/images/{{user.Avatar}}"
+                            id="profile_icon"></span>My Profile</a></li>
+            <li id="create-article"><a href="/create_article"><span class="icon"><img src="/images/article-line.png"
+                            id="create_article_icon"></span>Create article</a></li>
+            <li id="log-out"><a href="/logout"><span class="icon"><img src="/images/logout-box.png"
+                            id="logout_icon"></span>Sign Out</a></li>
+
+        </ul>
+    </div>
+
+</nav>
+<div id="icon-container">
+    <div id="notificationTop">Notification</div>
+    <div class="UnreadNotification"><strong>Unread notification:
+            {{unreadNotificationsCount.count}}</strong>
+    </div>
+    <div id="notificationBottom">
+        {{#each notifications}}
+        <div class="notifications" id="notifications{{this.Notification_ID}}">
+            <div class="firstLine">
+                <div class="contentLine">{{this.Content}}</div>
+                {{#unless this.Is_Read}}
+                <div class="red-dot"></div>
+                {{/unless}}
+            </div>
+
+
+            <div class="senderInformation">{{this.Timestamp}}</div>
+        </div>
+        {{/each}}
+        <div id="notificationMore">More</div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="left-column">
+        <div class="left-functions">
+            <div class="navbar-left">
+                <h2>Articles</h2>
+            </div>
+            <div class="navbar-right">
+
+            </div>
+        </div>
+
+        {{#each articles}}
+        <div class="article">
+            <div class="article-info">
+                <div class="article-title">
+                    <div class="profileArticleTitle"> <a href="/articleView/{{this.Article_ID}}" class="article-link">
+                            {{this.Title}}
+                        </a>
+                    </div>
+
+                    {{#if ../isAuthorPage}}
+
+                    <div class="editAndDeleteDiv">
+                        <form action="/editArticle/{{this.Article_ID}}" method="get">
+                            <button class="edit-button" onclick="editArticle('{{this.Article_ID}}')">Edit</button>
+                        </form>
+                       
+                            <button class="delete-button" onclick="confirmDelete('{{this.Article_ID}}')">Delete</button>
+                           
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            <div class="article-meta">
+              
+                <p class="article-likes">{{this.Likes_Count}} 💗<span class="icon"></span></p>
+                <p class="article-comments">{{this.Comments_Count}}<span class="icon"> 💬</span></p>
+                <p class="article-author"><span class="icon">👤</span> {{this.Username}}</p>
+              
+                <p class="article-date"><span class="icon">📅</span> {{this.Date}}</p>
+            </div>
+        </div>
+        <div id="deleteArticle" class="deleteArticleWindow">
+            <div>Are you sure you want to delete this article?</div>
+            <div class="DeleteArticleYesAndNoButton">
+                {{!-- 这里的userId是当前登陆者的id,删除也是删除这个登录者 --}}
+                <div><button class="yesDeleteArticle" id="yes{{this.Article_ID}}">Yes</button></div>
+                <div><button class="noDeleteArticle" id="no{{this.Article_ID}}">No</button></div>
+            </div>
+        </div>
+        {{/each}}
+
+        <div class="pagenumber">
+
+        </div>
+    </div>
+
+    <div class="right-column">
+       <div class="userProfile"><h2>User Profile</h2></div>
+        <div class="rightColumnBottom"> 
+            <div class="user-info-line">
+                <div class="user-avatar">
+                    <img src="/images/{{userProfile.Avatar}}" alt="User Avatar">
+                </div>
+                <div id="divBesideAvatar">
+                    <div class="user-follows">
+
+                        <button class="follow-button" data-user-id="{{userProfile.User_ID}}">
+                            Follow
+                        </button>
+
+                    </div>
+                    <div id="followAndFollowerDiv">
+                        <div id="followDiv"><a href="/followsList/1" id="followslink">Follows</a>:
+                            {{followsCount.[COUNT(*)]}}</div>
+                        <div id="subscriberDiv"><a href="/subscribersList/1" id="followerslink">Followers</a>:
+                            {{subcriberCount.[COUNT(*)]}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="userInfoSummary">
+            <div class="userInfo">
+                <label>Username: </label>{{userProfile.Username}}
+            </div>
+            <div class="userInfo">
+                <label>Birthday:</label> {{userProfile.Date_Of_Birth}}
+            </div>
+            <div class="userInfo">
+                <label>Description:</label> {{userProfile.Brief_Description}}
+            </div>
+
+            {{#if isAuthorPage}}
+            <div class="userInfo">
+                <label>Real Name:</label> {{userProfile.Real_Name}}
+            </div>
+            </div>
+
+            <div class="analytics-delete-buttons">
+                <form action="/analytics" method="get">
+                    <button type="submit" class="analytics-button">My Analytics</button>
+                </form>
+                <form action="/edit-account/{{userProfile.User_ID}}" method="get">
+                    <button type="submit" class="edit-account-button">Edit Account</button>
+                </form>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

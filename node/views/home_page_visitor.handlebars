@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="/css/home_page_visitor.css" />
+  <script src="/client/homePage.js"></script>
+
+
+  <div id="container">
+    <div id="header">
+      <div id="leftTopBar">
+        <div id="logo">
+          <img id="muse" src="/images/logopng-after-trim.png" alt="logo" />
+        </div>
+        <div id="MUSE">MUSE</div>
+      </div>
+      <div id="signInAndImage">
+        <div><img src="/images/login-box-line.png" id="sign_in_icon"></div>
+        <div id="sign-in">Sign in</div>
+      </div>
+    </div>
+
+    <div id="articleColumn">
+      <div id="sortAndArticle">
+        <div id="sortBar">
+          <div id="leftSortBar">
+            <h1>Articles</h1>
+          </div>
+          <div id="rightSortBar">
+            <div>
+              <label for="sortOptions" id="sortLabel"></label>
+              Sort by:
+            </div>
+            <div id="sortList">
+              <select id="sortOptions" name="sortOptions">
+                <option value="publishTime" {{publishTimeSelect}}>publish time</option>
+                <option value="authorName" {{authorNameSelect}}>author name</option>
+                <option value="articleTitle" {{articleTitleSelect}}>article title</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div id="articleDisplayBar">
+          {{#if fifteenArticles}}
+          {{#each fifteenArticles}}
+            <div class="articles" id={{this.Article_ID}}>
+            <div class="displayTitle" id="title{{this.Article_ID}}">
+              {{this.Title}}
+            </div >
+            <div class="partDiscription" id="description{{this.Article_ID}}">
+              {{{this.Content}}}
+            </div>
+            <div class="thridLine">
+              <div class="likesAndComments">
+              <div class="like">
+                <div class="likeImage">
+                  <img id="like{{this.Article_ID}}" class="likes" src="/images/like.png" alt="like" title="like" />
+                </div>
+                <div class="likeNumber">{{this.Likes_Count}}</div>
+              </div>
+              <div class="comment">
+                <div class="commentImage">
+                  <img class="comments" id="comment{{this.Article_ID}}" src="/images/comment.png" alt="comment"
+                    title="comment" />
+                </div>
+                <div class="commentNumber">{{this.commentNumber}}</div>
+              </div>
+              </div>
+             
+              <div class="authorInformation">
+                <div class="userClick" id="user{{this.User_ID}}">
+                  <div class="authorLine"><img class="userImage" src="/images/{{this.userInformation.Avatar}}" class="avatar"></div>
+                  <div class="authorLine" id="{{this.userInformation.Username}}">{{this.userInformation.Username}}</div>
+                </div>
+                <div class="authorLine">{{this.Date}}</div>
+              </div>
+            </div>
+          </div>
+        
+          {{/each}}
+          {{/if}}
+        </div>
+      </div>
+
+      <div id="pagesBar">
+        <!-- need to get article from datebase, give one example of displayed pages here-->
+        <div id="left" class="page">&lt;</div>
+        {{#if pages}}
+        <!-- pages here is all pages with no duplications -->
+        {{#each pages}}
+        <div class="pages" id= "page{{this}}">{{this}}</div>
+        {{/each}}
+        {{/if}}
+        <!-- &lt; &gt; -->
+        <div class="page" id="right">&gt;</div>
+      </div>
+    </div>
+  </div>

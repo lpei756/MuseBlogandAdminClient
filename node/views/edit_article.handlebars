@@ -1,0 +1,150 @@
+<link rel="stylesheet" href="/css/create_article.css">
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<script src="/client/createArticleCilent.js"></script>
+<body>
+    <nav class="navbar">
+        <div class="navbar_logo">
+            <img src="/images/logopng-after-trim.png" alt="Logo">
+            <span id="MUSE">MUSE</span>
+        </div>
+           <ul class="navbar_functions">
+            <li><a href="/"><span class="icon"><img src="/images/home.png" id="home_icon"></span>Home</a></li>
+            {{#if hasUnreadNotifications}}
+            <li id="notification"><a href="/notification/{{user.User_ID}}/1"><span class="icon"><img src="/images/notification-red.png" id="notification_icon"></span>Notifications</a>
+            <div id="unReadComment">{{unreadNotificationsCount.count}}</div>
+            </li>
+            {{else}}
+            <li id="notification"><a href="/notification/{{user.User_ID}}/1"><span class="icon"><img src="/images/notification-pink.png" id="notification_icon"></span>Notifications</a></li>
+            {{/if}}
+            <li><a href="/profile/{{user.User_ID}}"><span class="icon"><img src="/images/{{user.Avatar}}" id="profile_icon"></span>My Profile</a></li>
+            <li><a href="/logout"><span class="icon"><img src="/images/logout-box.png" id="create_article_icon"></span>Sign Out</a></li>
+        </ul>
+    </nav>
+ <div id="icon-container">
+      <div id="notificationTop">Notification</div>
+      <div class="UnreadNotification"><strong>Unread notification: {{unreadNotificationsCount.count}}</strong>
+      </div>
+      <div id="notificationBottom">
+        {{#each notifications}}
+        <div class="notifications" id="notifications{{this.Notification_ID}}">
+            <div class="firstLine">
+              <div class="contentLine">{{this.Content}}</div>
+            {{#unless this.Is_Read}}
+            <div class="red-dot"></div>
+            {{/unless}}
+          </div>
+          
+
+        <div class="senderInformation">{{this.Timestamp}}</div>
+      </div>
+      {{/each}}
+      <div id="notificationMore">More</div>
+    </div>
+  </div>
+    <form class="container" action="/editArticle/{{article.Article_ID}}" method="POST" enctype="multipart/form-data">
+        <div class="input_group">
+            <div class="sub_group">
+                <span class="title_hint">Title:</span>
+            </div>
+            <div class="sub_group">
+                <input class="title_text" type="text" name="title" value="{{article.Title}}">
+            </div>
+        </div>
+        <div class="input_group">
+            <div class="sub_group">
+                <span class="content_hint" class="content_text">Content:</span>
+            </div>
+            <div class="sub_group" id="editor">{{{article.Content}}}</div>
+            <input type="hidden" id="hiddenContent" name="content">
+            </div>
+        </div>
+        <div class="input_group">
+            <div class="sub_group">
+                <div class="image-display">
+                    <label class="image_hint" for="txtCaption">Your image:</label>
+                    <img id="image" src="/uploadedFiles/{{article.Image}}">
+                </div>
+                <br>
+                <div>
+                    <span class="image_hint">Upload a new image in the following formats: .png, .jpg, .jpeg, .bmp:
+                    </span>
+                </div>
+                <br>
+                <div>
+                    <input type="file" name="imageFile" accept=".png,.jpg,.jpeg,.bmp">
+        
+                </div>
+            </div>
+
+            <div>
+                <button class="edit_article_button">Publish Changes</button>
+            </div>
+        </div>
+
+    </form>
+
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js">
+    </script>
+    <script>
+        const toolbarOptions = [
+            ['bold', 'italic', 'underline'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            [{ 'header': 1 }, { 'header': 2 }]
+        ];
+        const quill = new Quill('#editor', {
+            modules: {
+                toolbar: toolbarOptions
+            },
+            theme: 'snow'
+        });
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!--  JavaScript 代码 -->
+    <script>
+        const userID = '{{user.User_ID}}';
+        $(document).ready(function () {
+            // check if user has uploaded an image
+            const imageUrl = $('#image').attr('src');
+            if (!imageUrl || imageUrl == '/uploadedFiles/') {
+            // if image is null, hide the image display
+            $('.image-display').hide();
+            
+        }
+            $('form').on('submit', function (event) {
+                const content = document.getElementById('editor').innerHTML;
+                document.getElementById('hiddenContent').value = content;
+                event.preventDefault(); // prevent the browser from submitting the form
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'POST',
+                    data: new FormData(this), // create a FormData instance
+                    processData: false, 
+                    contentType: false, 
+                    success: function (data) {
+                        // logic when the request is successful
+                        if (data.success) {
+                        alert('You have successfully re-published the article!');
+                         var currentURL = window.location.href;
+                        const parsedUrl = new URL(currentURL);
+                        const articleId = parsedUrl.pathname.split('/').pop();
+                        window.location.href = '/articleView/' + articleId;
+                        } else {
+                            alert('You have failed to publish the article!');
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        // logic when the request fails
+                        alert('You have failed to publish the article!');
+                    }
+                });
+            });
+        });
+        $(document).ready(function() {
+  $('input[data-formula], a.ql-action, a.ql-remove').hide();
+});
+    </script>
+
+
+</body>

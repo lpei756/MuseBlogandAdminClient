@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="/css/subscribers.css">
+<script src="/client/subscription.js"></script>
+<div>
+    <nav class="navbar">
+        <div class="navbar_logo">
+            <img src="/images/logopng-after-trim.png" alt="Logo">
+            <span id="MUSE">MUSE</span>
+        </div>
+        <ul class="navbar_functions">
+            <li id="home"><a href="/"><span class="icon"><img src="/images/home.png" id="home_icon"></span>Home</a></li> 
+            <li id="sign-in">
+                <a href="/user_login"><span class="icon"><img src="/images/login-box-line.png" id="sign_in_icon"></span>Sign in</a>
+            </li>
+            {{#if hasUnreadNotifications}}
+            <li id="notification"><a href="/notification/{{user.User_ID}}/1" id="notification-link"><span class="icon"><img src="/images/notification-red.png" id="notification_icon"></span>Notifications</a>
+            <div id="unReadComment">{{unreadNotificationsCount.count}}</div>
+            </li>
+            {{else}}
+            <li id="notification"><a href="/notification/{{user.User_ID}}/1" id="notification-link"><span class="icon"><img src="/images/notification-pink.png" id="notification_icon"></span>Notifications</a></li>
+            {{/if}}
+            <li id="profile"><a href="/profile/{{user.User_ID}}"><span class="icon"><img src="/images/{{user.Avatar}}" id="profile_icon"></span>My Profile</a></li> 
+            <li id="create-article"><a href="/create_article"><span class="icon"><img src="/images/article-line.png" id="create_article_icon"></span>Create article</a></li> 
+            <li id="log-out"><a href="/logout"><span class="icon"><img src="/images/logout-box.png" id="logout_icon"></span>Sign Out</a></li>
+        
+        </ul>
+    </nav>
+</div>
+<div id="icon-container">
+      <div id="notificationTop">Notification</div>
+      <div class="UnreadNotification"><strong>Unread notification: {{unreadNotificationsCount.count}}</strong>
+      </div>
+      <div id="notificationBottom">
+        {{#each notifications}}
+        <div class="notifications" id="notifications{{this.Notification_ID}}">
+            <div class="firstLine">
+              <div class="contentLine" >{{this.Content}}</div>
+            {{#unless this.Is_Read}}
+            <div class="red-dot"></div>
+            {{/unless}}
+          </div>
+          
+        <div class="senderInformation">{{this.Timestamp}}</div>
+      </div>
+      {{/each}}
+      <div id="notificationMore">More</div>
+    </div>
+  </div>
+
+<div class="container">
+    <div id="articleColumn">
+        <div id="sortAndArticle">
+            <div id="sortBar">
+                <div id="leftSortBar">
+                    <h1>Fans</h1>
+                </div>
+
+            </div>
+            <div id="fansBar">
+               {{#each slicedSubscribersList}}
+               <div class="fansDisplayBar">
+                 <a href="/profile/{{this.User_ID}}">
+                  <div class="fansInfomation">
+                    <div class="fansLine"><img class="userImage" src="/images/{{this.Avatar}}" class="thumbnailavatar"></div>
+                    <div class="fansLine" id="{{this.Username}}">{{this.Username}}</div>
+                  </div>
+                </a>
+                
+                
+            
+                {{!-- </form> --}}
+                </div>
+                {{/each}}
+
+            </div>
+        </div>
+
+        <div class="pagenumber">
+        <div id="left" class="page">&lt;</div>
+        {{#each pages}}
+          <div class="pages" id="page{{this}}">{{this}}</div>
+        {{/each}}
+        <div class="page" id="right">&gt;</div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,249 @@
+<body>
+    <script src="/client/editAccount.js"></script>
+    {{!-- <link href="https://fonts.googleapis.com/css?family=Italiana&display=swap"
+        rel="stylesheet" /> --}}
+    <link rel="stylesheet" href="/css/edit_account.css" />
+
+    <div class="container">
+
+        {{#if toastMessage}}
+        <p>{{toastMessage}}</p>
+        {{/if}}
+
+        <div class="frame"></div>
+        <div class="pannel">
+            <div class="pannelshadow"></div>
+            <div class="toastMessage">{{toastMessage}}</div>
+            <form action="/edit_account/{{user.User_ID}}" method="POST">
+                <button type="submit" class="submitbtn" id="submitBtn"
+                    onClick="console.log('Submit button clicked')">Submit</button>
+
+                <div class="iconcontainer">
+                    <div class="icon1" data-icon="boy1.png"></div>
+                    <div class="icon2" data-icon="boy2.png"></div>
+                    <div class="icon3" data-icon="boy3.png"></div>
+                    <div class="icon4" data-icon="boy4.png"></div>
+                    <div class="icon5" data-icon="girl1.png"></div>
+                    <div class="icon6" data-icon="girl2.png"></div>
+                    <div class="icon7" data-icon="girl3.png"></div>
+                    <div class="icon8" data-icon="girl4.png"></div>
+                    <div class="icon9" data-icon="girl5.png"></div>
+                    <input type="hidden" id="icon" name="icon" value>
+                </div>
+                <span class="chooseicon">Please choose your icon</span>
+
+                <input type="text" name="Brief_Description"
+                    class="descriptiontext"
+                    placeholder="Please describe yourself in 30 words"
+                    value="{{userProfile.Brief_Description}}"
+                    oninput="checkDescriptionLength(this)">
+                <span class="description">Description</span>
+                <span id="descriptionHint" class="descriptionHint"></span>
+
+                <input type="password" name="repassword"
+                    class="confirmpasswordtext"
+                    placeholder="Please confirm your password">
+                <span class="confirmpassword">Confirm Password</span>
+                <div class="passwordAvailability" id="passwordAvailability"></div>
+
+                <input type="password" id="password" name="password"
+                    class="passwordtext"
+                    placeholder="Please enter your password">
+                <span class="password">Password</span>
+                <div class="passwordHint" id="passwordHint"></div>
+
+                <input type="date" name="birthdate" class="birthdatetext"
+                    placeholder="DD/MM/YYYY"
+                    value="{{userProfile.Date_Of_Birth}}" max="{{currentDate}}">
+                <span class="birthdate">Birth date</span>
+                <span id="birthdateHint" class="birthdateHint"></span>
+
+                <input type="text" name="idname" class="idnametext"
+                    placeholder="Please enter your real name"
+                    value="{{userProfile.Real_Name}}">
+                <span class="idname">Real Name</span>
+
+                <input type="text" name="username" class="usernametext"
+                    placeholder="Please enter your username"
+                    value="{{userProfile.Username}}">
+                <span class="username">Username</span>
+                <div class="usernameAvailability" id="usernameAvailability"></div>
+
+            </form>
+
+            <button class="deletebtn" id="deleteBtn">Delete Account</button>
+            <div id="deleteAccount" class="deleteAccountWindow">
+                <div>Are you sure you want to delete your account?</div>
+                <div class="DeleteAccountYesAndNoButton">
+
+                    <div><button class="yesDeleteAccount"
+                            id="yes{{user.User_ID}}">Yes</button></div>
+                    <div><button class="noDeleteAccount" id="no{{user.User_ID}}">No</button></div>
+                </div>
+            </div>
+
+            <a href="/profile/{{user.User_ID}}" class="haveaccount">Return back
+                to user profile</a>
+            <span class="creataccount">Edit Account</span>
+            <div class="logo"></div>
+
+        </div>
+    </div>
+
+    <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        // icon selection turn red when clicked
+        $(document).ready(function () {
+            $('.iconcontainer div').on('click', function () {
+                $('.iconcontainer div').css('outline', ''); // cancel all outlines
+                $(this).css('outline', '2px solid red'); // emphasize the clicked one
+                $('#icon').val($(this).attr('data-icon')); // update the hidden input field
+            });
+        }); 
+
+      // username input check
+        const usernameAvailability = document.getElementById("usernameAvailability");
+        let usernameAvailable = false;
+        document.querySelector("input[name='username']").addEventListener("input", function () {
+        const username = this.value;
+        if (!username.trim()) {
+        document.getElementById("usernameAvailability").textContent = '';
+        } else {
+        fetch(`/edit_check_username/${username}`)
+        .then(response => response.text())
+        .then(message => {
+            if (username.length < 3 || username.length > 10) {
+                usernameAvailability.style.color = 'red';
+                document.getElementById("usernameAvailability").textContent = 'Please limit username to 3-10 characters';
+                usernameAvailable = false;
+            } else if (message == "Username is available") {
+                document.getElementById("usernameAvailability").textContent = message;
+                usernameAvailability.style.color = 'green';
+                usernameAvailable = true;
+            } else if (message == "Username already exists, please choose another") {
+                usernameAvailability.style.color = 'red';
+                document.getElementById("usernameAvailability").textContent = message;
+                usernameAvailable = false;
+            } else if (message == "This is your current username"){
+                usernameAvailability.style.color = 'green';
+                document.getElementById("usernameAvailability").textContent = message;
+                usernameAvailable = true;
+            } else {
+                document.getElementById("usernameAvailability").textContent = message;
+                usernameAvailable = false;
+            }
+        });
+        }
+        });
+        console.log("usernameAvailable" + usernameAvailable);
+        document.querySelector("#submitBtn").addEventListener("click", function (event) {
+            const iconValue = document.getElementById("icon").value;
+
+            if (!iconValue || !usernameAvailable) {
+            event.preventDefault();
+            if (!iconValue) {
+            document.getElementById("submitHint").textContent = 'Please choose your icon';
+            }
+            if (!usernameAvailable) {
+            document.getElementById("usernameAvailability").textContent = 'Username already exists, please choose another';
+            }
+            }
+        });
+
+        //check if the password and repassword are the same
+        const passwordInput = document.querySelector("input[name='password']");
+        const repasswordInput = document.querySelector("input[name='repassword']");
+        const passwordHint = document.getElementById("passwordAvailability");
+
+        function checkPasswordConsistency() {
+            if (passwordInput.value !== repasswordInput.value) {
+                passwordHint.textContent = 'Passwords do not match!';
+                passwordHint.style.color = 'red';
+            } else {
+                passwordHint.textContent = '';
+            }
+        }
+
+        // Listen for the input event on the password input field
+        document.getElementById('password').addEventListener('input', function () {
+            var passwordInput = document.getElementById('password');
+            var passwordHint = document.getElementById('passwordHint');
+
+            if (passwordInput.value.length < 5) {
+                passwordHint.innerText = "Password must be at least 5 characters long";
+            } else {
+                passwordHint.innerText = "";
+            }
+        });
+
+        // Listen for the blur event on the repassword input field
+        repasswordInput.addEventListener('blur', checkPasswordConsistency);
+
+        $(document).ready(function () {
+            var toastMessage = $.cookie('toastMessage');
+            if (toastMessage) {
+                document.getElementById("toastMessage").textContent = toastMessage;
+            }
+        });
+
+        // Check if the Description input exceeds 30 characters
+        const descriptionHint = document.getElementById("descriptionHint");
+
+        function checkDescriptionLength(input) {
+            const maxLen = 30;
+            if (input.value.length > maxLen) {
+                descriptionHint.textContent = 'Input cannot exceed 30 characters!';
+                input.value = input.value.slice(0, maxLen);
+            } else {
+                descriptionHint.textContent = '';
+            }
+        }
+
+        // Get current date in YYYY-MM-DD format
+        function getCurrentDate() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        const birthdateInput = document.querySelector("input[name='birthdate']");
+        const birthdateHint = document.getElementById("birthdateHint");
+        const currentDate = getCurrentDate();
+
+        birthdateInput.max = currentDate;
+
+        birthdateInput.addEventListener('change', function () {
+            const selectedDate = new Date(this.value);
+            const currentDateObj = new Date(currentDate);
+
+            if (selectedDate > currentDateObj) {
+                birthdateHint.textContent = 'Please select a date before the current date';
+            } else {
+                birthdateHint.textContent = '';
+            }
+            });
+
+        // Get form and submit button elements
+        var form = document.querySelector("form");
+        var submitBtn = document.getElementById("submitBtn");
+
+        // Add click event listener to submit button
+        submitBtn.addEventListener('click', function () {
+            // Get password input and password hint elements
+            var passwordInput = document.getElementById('password');
+            var passwordHint = document.getElementById('passwordHint');
+
+            // Check password length
+            if (passwordInput.value.length < 5) {
+                passwordHint.innerText = "Password must be at least 5 characters long";
+            } else {
+                passwordHint.innerText = "";
+                form.submit(); // Only submit the form if password length is valid
+            }
+        });
+
+    </script>
+</body>
